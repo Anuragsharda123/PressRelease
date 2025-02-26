@@ -3,8 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
 import lockImage from '../../public/LoginSider.webp';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const LoginForm:React.FC = () => {
+    const router = useRouter();
 
   const initialValues = {
     formName: 'News-Login-Form',
@@ -18,8 +21,20 @@ const LoginForm:React.FC = () => {
     password: Yup.string().required('Password is required'),
   });
 
-  const handleSubmit = (values:any) => {
-    console.log(values);
+  const SaveData = async(data:any) => {
+    try{
+        console.log(data);
+        const d = await axios.post('http://localhost:3000/api/login', data);
+    }
+    catch(err:any){
+        console.log(err);
+    }
+  }
+
+  const handleSubmit =  (values:any) => {
+    SaveData(values);
+    router.push('/');
+    console.log("1")
   };
 
   return (
