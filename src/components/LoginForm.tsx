@@ -4,9 +4,8 @@ import * as Yup from 'yup';
 import Image from 'next/image';
 import lockImage from '../../public/LoginSider.webp';
 
-const LoginForm:React.FC = async() => {
-    const a = {name:'Rahul'}
-    const b = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+const LoginForm:React.FC = () => {
+
   const initialValues = {
     formName: 'News-Login-Form',
     userName: '',
